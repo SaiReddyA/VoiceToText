@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Speech to Text App using Web Speech API">
+  <meta name="keywords" content="Speech to Text, Voice Recognition, Web Speech API, JavaScript, HTML, Responsive Design">
+  <meta name="author" content="Saireddy">
+  <title>Professional Speech to Text App</title>
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Icon for the tab -->
+  <!-- <link rel="icon" href="assets/microphone.png" type="image/png"> -->
+</head>
+<body>
+  <div class="container">
+    <h1>Speech to Text Converter</h1>
+
+    <div class="controls">
+      <button id="start-btn" onclick="startListening()">🎤 Start Listening</button>
+      <button id="stop-btn" onclick="stopListening()" disabled>⏹️ Stop Listening</button>
+    </div>
+
+    <textarea id="text-output" placeholder="Your speech will appear here..." readonly></textarea>
+    <p id="status-message" class="status"></p> <!-- For status or error messages -->
+  </div>
+  
+  <!-- Link to JavaScript -->
+  <script >
+let recognition;
+
+// Initialize Speech Recognition
+if ('webkitSpeechRecognition' in window) {
+  recognition = new webkitSpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.lang = 'en-US';  // Set language
+} else {
+  document.getElementById('status-message').textContent = 
+    'Sorry, your browser does not support Speech Recognition.';
+}
+
+// Start Listening Function
+function startListening() {
+  if (!recognition) return;
+
+  recognition.start();
+  document.getElementById('status-message').textContent = 'Listening... Speak now.';
+  document.getElementById('start-btn').disabled = true;
+  document.getElementById('stop-btn').disabled = false;
+}
+
+// Stop Listening Function
+function stopListening() {
+  if (recognition) {
+    recognition.stop();
+    document.getElementById('status-message').textContent = 'Stopped listening.';
+    document.getElementById('start-btn').disabled = false;
+    document.getElementById('stop-btn').disabled = true;
+  }
+}
+
+// Handle Speech Recognition Events
+recognition.onresult = (event) => {
+  let interimTranscript = '';
+  for (let i = event.resultIndex; i < event.results.length; i++) {
+    const transcript = event.results[i][0].transcript;
+    if (event.results[i].isFinal) {
+      document.getElementById('text-output').value += transcript + '\n';
+    } else {
+      interimTranscript += transcript;
+    }
+  }
+  document.getElementById('text-output').placeholder = interimTranscript;
+};
+
+recognition.onerror = (event) => {
+  console.error('Speech Recognition Error:', event.error);
+
+  if (event.error === 'network') {
+    document.getElementById('status-message').textContent = 
+      'Network error: Please check your internet connection.';
+  } else if (event.error === 'not-allowed') {
+    document.getElementById('status-message').textContent = 
+      'Microphone access denied. Please allow microphone permissions.';
+  } else {
+    document.getElementById('status-message').textContent = 
+      `Error: ${event.error}`;
+  }
+
+  document.getElementById('start-btn').disabled = false;
+  document.getElementById('stop-btn').disabled = true;
+};
+
+recognition.onend = () => {
+  document.getElementById('status-message').textContent = 
+    'Recognition ended. Click "Start" to listen again.';
+  document.getElementById('start-btn').disabled = false;
+  document.getElementById('stop-btn').disabled = true;
+};
+
+
+  </script>
+</body>
+</html>
