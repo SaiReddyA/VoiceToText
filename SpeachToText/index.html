@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Speech to Text and Text to Speech App designed by Sai Reddy. This will help you to gain speaking skills and Listening skill using this site.">
+  <meta name="keywords" content="Speech to Text, Text to Speech, Web Speech API, Bootstrap, Responsive">
+  <meta name="author" content="Saireddy">
+  <!-- Open Graph Meta Tags for Sharing -->
+  <meta property="og:title" content="Speech ↔️ Text Converter App">
+  <meta property="og:description"
+    content="Easily convert speech to text or let your text be read aloud! Simple, fast, and intuitive web app.">
+  <meta property="og:image" content="https://ibb.co/x5ZQGgy">
+  <!-- <meta property="og:url" content=""> -->
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Speech ↔️ Text Converter App">
+  <meta name="twitter:description" content="Convert your voice to text or read aloud any text!">
+  <meta name="twitter:image" content="https://ibb.co/x5ZQGgy">
+
+  <title>Speech ↔️ Text Converter - Sai Reddy</title>
+
+  <!-- Bootstrap Icons CSS -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/Toastify.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="withBackLog.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-links">
+        <a href="#" id="speech-tab" class="nav-item active">Speech to Text</a>
+        <a href="#" id="text-tab" class="nav-item">Text to Speech</a>
+      </div>
+      <div class="user-info">
+        <i class="bi bi-person-circle"></i>
+        <span class="user-name">Saireddy</span>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Main Content in a Card -->
+  <div class="container">
+    <div class="card">
+      <!-- Speech to Text Section -->
+      <div id="speech-to-text" class="feature-section">
+        <h2>Speech to Text</h2>
+        <div class="controls">
+          <button id="start-btn" class="btn btn-success">
+            <i class="bi bi-mic"></i> Start Listening
+          </button>
+          <button id="stop-btn" class="btn btn-danger" disabled>
+            <i class="bi bi-stop-circle"></i> Stop
+          </button>
+        </div>
+        <textarea id="text-output" placeholder="Your speech will appear here..." readonly></textarea>
+        <p id="status-message" class="status"></p>
+      </div>
+
+      <!-- Text to Speech Section -->
+      <div id="text-to-speech" class="feature-section hidden">
+        <h2>Text to Speech</h2>
+        <textarea id="tts-input" placeholder="Enter text to read aloud..."></textarea>
+        <button id="speak-btn" class="btn btn-primary">
+          <i class="bi bi-volume-up"></i> Speak
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-div">
+      <div class="footer-text">
+        <p>© <span id="currentyear"></span> All Rights Reserved | Saireddy</p>
+      </div>
+      <div class="social-icons">
+        <a title="Facebook"
+          href="https://www.facebook.com/people/Sai-Reddy/pfbid02YNCrtVFv2BQdwjHtXfrqxWiQJpGrsvqJF1QyYwN1r3Rh6idk7HkNUDHSMg33UTcul/?sk=about_details"
+          target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="mailto:saireddy.1.1919@gmail.com" target="_empty" class="link" title="Mail"><i
+            class="bi bi-envelope"></i></a>
+        <a href="https://www.instagram.com/____saireddy_____?igsh=aTN2ODB5cXp3Yzk4" target="_empty" title="Instagram"><i
+            class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/sai-reddy-791974267" class="link" target="_empty" title="Linked In"><i
+            class="bi bi-linkedin"></i></a>
+        <a href="https://twitter.com/SaiReddy8978" class="link"><i class="bi bi-twitter" title="twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toastify JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.0/Toastify.min.js" defer></script>
+  <!-- JavaScript -->
+  <script src="SpeachToText.js" defer></script>
+
+</body>
+
+</html>

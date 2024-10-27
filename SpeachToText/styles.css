@@ -1,0 +1,256 @@
+/* Global Styles */
+
+
+
+
+/* Container & Card */
+.container {
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 150px);
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Feature Sections */
+.feature-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  resize: none;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Footer Styling */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background-color: transparent;
+  text-align: center;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+/* Hidden Class */
+.hidden {
+  display: none;
+}
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-image: url('Voice background image.png');
+  background-size: cover; /* Cover the whole background */
+  background-position: center; /* Center the image */
+  height: 100vh; /* Make sure it covers the full viewport height */
+}
+body::before {
+  content: '';
+  position: absolute; /* Position it relative to the body */
+  top: 0; /* Cover from the top */
+  left: 0; /* Cover from the left */
+  right: 0; /* Cover to the right */
+  bottom: 0; /* Cover to the bottom */
+  background-image: url('Voice background image.png');
+  background-size: cover; /* Cover the whole background */
+  background-position: center; /* Center the image */
+  filter: blur(2.2px); /* Apply blur effect */
+  z-index: 0; /* Position it below content */
+}
+.header, .footer {
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-radius: 8px; /* Optional: to give it a rounded corner */
+  position: fixed; /* Keep the header and footer fixed */
+  width: 100%;
+  z-index: 1000; /* Keep it above other elements */
+}
+.footer-div {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Vertically center the items */
+}
+
+.footer-text p {
+  margin: 0 !important; /* Remove margin from p tag */
+}
+
+.social-icons {
+  display: flex; /* Align social icons in a row */
+  gap: 10px; /* Space between icons */
+}
+
+.social-icons a {
+  color: white; /* Icon color */
+  font-size: 24px; /* Icon size */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Add transition for hover effect */
+}
+
+.social-icons a:hover {
+  color: #4ca7af; /* Change color on hover */
+}
+/* Navbar Styles */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: transparent;
+  padding: 10px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding: 5px 0;
+  transition: color 0.3s;
+}
+
+/* Underline Animation for Hover and Active */
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #54acd8;
+  transition: width 0.3s;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%; /* Expand underline on hover and active */
+}
+
+/* User Icon and Name */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.user-info i {
+  font-size: 24px;
+}
+
+.user-name {
+  font-size: 18px;
+}
+
+/* Optional Subtle Bottom Line for Navbar */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Media Queries for Responsive Design */
+
+/* Large screens (default styles) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 800px;
+    margin: 70px auto; /* Center the content */
+    overflow: hidden !important;
+  }
+  body {
+    overflow: hidden; /* Disable body scrolling on large screens */
+  }
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .header {
+    padding: 10px 10px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .user-info {
+    display: none; /* Hide the user info on mobile */
+  }
+
+  .header {
+    justify-content: center;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .footer-div {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+}
