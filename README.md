@@ -2,5 +2,3 @@
 
 #TextToVoice
 Easy Angular project
-\
-
