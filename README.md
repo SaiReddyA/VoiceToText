@@ -8,4 +8,3 @@
 #TextToVoice
 
 Easy Angular project
-
