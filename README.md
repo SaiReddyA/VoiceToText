@@ -5,5 +5,4 @@
 
 #TextToVoice
 
-
 Easy Angular project 
